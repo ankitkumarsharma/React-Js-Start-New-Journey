@@ -1,12 +1,16 @@
 const Item = ({name,isPacked}) =>{
-    if(isPacked){
-        return <li>{name}</li>
-    } else {
-        return null;
-    }
+    return (
+        <li>
+            {isPacked ? (
+                <del>
+                    name
+                </del>
+            ): name}
+        </li>
+    );
 }
 
-const Condition1 = () => {
+const Condition2 = () => {
     return(
         <>
             <h1>Dummy List</h1>
@@ -20,4 +24,4 @@ const Condition1 = () => {
     );
 }
 
-export default Condition1;
+export default Condition2;
