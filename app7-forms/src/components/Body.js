@@ -1,11 +1,8 @@
-import Container from "./Container";
-import Tabs from "./Tabs";
+import FormExp1 from "./form-exp-1/FormExp1";
 
 const Body = ()=>{
     return(
-        <Container>
-            <Tabs/>
-        </Container>
+        <FormExp1 />
     );
 }
 

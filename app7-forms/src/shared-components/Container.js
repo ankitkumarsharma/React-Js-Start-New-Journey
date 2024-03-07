@@ -1,8 +1,8 @@
-const Container = ({children})=>{
+const Container = ({colName,children})=>{
     return(
         <div className="container mt-3">
             <div className="row">
-                <div className="col">
+                <div className={colName}>
                     {children}
                 </div>
             </div>
