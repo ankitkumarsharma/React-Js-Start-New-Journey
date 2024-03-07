@@ -3,7 +3,7 @@ import SlideContent from "./SlideContent";
 
 const SliderContainer = ({ prevInactive, nextInactive, nextCount, prevCount, count, data }) => {
     return (
-        <div className="flex m-20">
+        <div className="flex items-center m-20">
             <div className="flex-1">
                 <Button inactive={prevInactive} onClick={prevCount}>
                     Prev

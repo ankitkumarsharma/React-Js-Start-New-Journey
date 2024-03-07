@@ -2,13 +2,13 @@ const SlideContent = ({ count, data }) => {
     let slide = data[count];
     if (slide) {
         return (
-            <div>
-                <p className="font-bold">
+            <div className="text-center">
+                <p className="font-bold pb-4">
                     {count + 1} of {data.length}
                 </p>
-                <h1 className="text-2xl text-center font-bold">
+                <h4 className="text-center font-bold h-16">
                     {slide.title}
-                </h1>
+                </h4>
                 <img alt={slide.title} src={slide.url} />
             </div>
         );
