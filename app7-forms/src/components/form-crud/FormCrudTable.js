@@ -1,19 +1,19 @@
 import './FormCrudTable.css';
 
-const FormCrudTable = ({data}) => {
+const FormCrudTable = ({ data, onEdit, onDelete }) => {
     const tableRow = data.map((row, index) => (
         <tr>
-            <td>{index+1}</td>
+            <td>{index + 1}</td>
             <td>{row.name}</td>
             <td>{row.email}</td>
             <td>{row.mobile}</td>
             <td>
                 <ul className="list-inline">
                     <li className="list-inline-item">
-                        <a href='javascript(0)' className="edit">Edit</a>
+                        <button onClick={() => onEdit(index)} className="edit">Edit</button>
                     </li>
                     <li className="list-inline-item">
-                        <a href='javascript(0)' className="trash">Delete</a>
+                        <button onClick={() => onDelete(index)} className="trash">Delete</button>
                     </li>
                 </ul>
             </td>
@@ -22,23 +22,23 @@ const FormCrudTable = ({data}) => {
     return (
         <>
             <h4 className="ak-sub-title">Table</h4>
-            <div className="table-responsive">
-                <table className="table">
-                    <tr>
-                        <th>Sr.No.</th>
-                        <th>Name</th>
-                        <th>Email Id</th>
-                        <th>Mobile No.</th>
-                        <th>Action</th>
-                    </tr>
-                    {tableRow}
-                    {/* <tr>
-                        <td>
-                            <p className="error">No Data</p>
-                        </td>
-                    </tr> */}
-                </table>
-            </div>
+            {
+                data.length > 0 ?
+                    <div className="table-responsive">
+                        <table className="table">
+                            <tr>
+                                <th>Sr.No.</th>
+                                <th>Name</th>
+                                <th>Email Id</th>
+                                <th>Mobile No.</th>
+                                <th>Action</th>
+                            </tr>
+                            {tableRow}
+                        </table>
+                    </div> :
+                    <p className="error">No Data</p>
+
+            }
         </>
     );
 }

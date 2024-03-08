@@ -11,7 +11,7 @@
     margin: 0px;
 }
 
-.table-responsive .table tr td ul li a {
+.table-responsive .table tr td ul li button {
     cursor: pointer;
     background: #d83f87;
     padding: 3px;
@@ -20,8 +20,10 @@
     text-align: center;
     color: #fff;
     text-decoration: none;
+    border-color: #d83f87;
 }
 
-.table-responsive .table tr td ul li a.trash {
+.table-responsive .table tr td ul li button.trash {
     background: #ff4545;
+    border-color: #ff4545;
 }

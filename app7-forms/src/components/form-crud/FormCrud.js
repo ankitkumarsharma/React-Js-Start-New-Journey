@@ -12,7 +12,8 @@ const FormCrud = () => {
     const [mobile, setMobile] = useState("");
     const [password, setPassword] = useState("");
     const [table, setTable] = useState([]);
-
+    const [isedit, setIsedit] = useState(false);
+    const [editindex, setEditindex] = useState(null);
     const onSubmit = (e) => {
         e.preventDefault();
         let formObj = {
@@ -22,7 +23,45 @@ const FormCrud = () => {
             password: password
         };
         setTable([...table, formObj]);
+        resetForm();
     }
+    const updateRow = () => {
+        let formObj = {
+            name: name,
+            email: email,
+            mobile: mobile,
+            password: password
+        };
+        let updateTable = [...table];
+        updateTable[editindex] = { ...formObj };
+        setTable(updateTable);
+        setIsedit(false);
+        resetForm();
+    }
+    const editRow = (index) => {
+        setFormValue(table[index]);
+        setEditindex(index);
+        setIsedit(true);
+    }
+    const deleteRow = (index) => {
+        let updateTable = [...table];
+        updateTable.splice(index, 1)
+        setTable(updateTable);
+    }
+    const resetForm = () => {
+        setName('');
+        setEmail('');
+        setMobile('');
+        setPassword('');
+    }
+
+    const setFormValue = (data) => {
+        setName(data.name);
+        setEmail(data.email);
+        setMobile(data.mobile);
+        setPassword(data.password);
+    }
+
     return (
         <>
             <ContainerRowCol colName="col">
@@ -30,7 +69,7 @@ const FormCrud = () => {
                     <Column>
                         <Card>
                             <h4 className="ak-sub-title">Form</h4>
-                            <form onSubmit={onSubmit}>
+                            <form>
                                 <Input
                                     value={name}
                                     label="Name"
@@ -61,10 +100,14 @@ const FormCrud = () => {
                                 />
                                 <ul className="list-inline">
                                     <li className="list-inline-item">
-                                        <button className="btn primary-btn" type="submit">Submit</button>
+                                        {
+                                            !isedit ?
+                                                <button onClick={onSubmit} className="btn primary-btn" type="button">Submit</button> :
+                                                <button onClick={updateRow} className="btn primary-btn" type="button">Update</button>
+                                        }
                                     </li>
                                     <li className="list-inline-item">
-                                        <button className="btn secondary-btn" type="button">Reset</button>
+                                        <button className="btn secondary-btn" onClick={resetForm} type="button">Reset</button>
                                     </li>
                                 </ul>
                             </form>
@@ -72,7 +115,7 @@ const FormCrud = () => {
                     </Column>
                     <Column>
                         <Card>
-                            <FormCrudTable data={table} />
+                            <FormCrudTable onEdit={editRow} onDelete={deleteRow} data={table} />
                         </Card>
                     </Column>
                 </Row >
