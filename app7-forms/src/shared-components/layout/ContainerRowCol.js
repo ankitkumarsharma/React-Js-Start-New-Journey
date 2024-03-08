@@ -1,4 +1,4 @@
-const Container = ({colName,children})=>{
+const ContainerRowCol = ({colName,children})=>{
     return(
         <div className="container mt-3">
             <div className="row">
@@ -10,4 +10,4 @@ const Container = ({colName,children})=>{
     );
 }
 
-export default Container;
+export default ContainerRowCol;

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Button from "../../shared-components/Button";
-import Container from "../../shared-components/Container";
+import ContainerRowCol from '../../shared-components/layout/ContainerRowCol';
 import Input from "../../shared-components/Input";
 
 const FormExp1 = () => {
@@ -18,7 +18,7 @@ const FormExp1 = () => {
         console.log(formObj)
     }
     return (
-        <Container colName="col-5">
+        <ContainerRowCol colName="col-5">
             <form onSubmit={onSubmit}>
                 <Input
                     value={name}
@@ -43,7 +43,7 @@ const FormExp1 = () => {
                 />
                 <Button className="btn btn-primary" type="submit">Submit</Button>
             </form>
-        </Container>
+        </ContainerRowCol>
     );
 }
 

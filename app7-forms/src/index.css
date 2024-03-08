@@ -12,3 +12,90 @@ code {
     monospace;
 }
 @import 'bootstrap/dist/css/bootstrap.css';
+.btn, .primary-btn, .secondary-btn, .sm-btn {
+  min-width: 130px;
+  color: #fff;
+  border-radius: 35px;
+}
+.btn:hover, .primary-btn:hover, .secondary-btn:hover, .sm-btn:hover {
+  background-color: #b10355;
+  color: #fff;
+}
+.btn:focus, .primary-btn:focus, .secondary-btn:focus, .sm-btn:focus {
+  outline: 0;
+  box-shadow: none;
+}
+.primary-btn {
+  background-color: #d83f87;
+}
+.secondary-btn {
+  background-color: #44318d;
+}
+.sm-btn {
+  background-color: #d83f87;
+  width: 60px;
+  min-width: auto;
+}
+.ak-title, .ak-title-lg {
+  font-size: 18px;
+  color: #d83f87;
+  font-weight: 500;
+}
+.ak-sub-title {
+  font-size: 16px;
+  color: #44318d;
+  font-weight: 500;
+}
+.ak-para {
+  font-size: 14px;
+  color: #000;
+  opacity: 0.7;
+}
+.ak-title-lg {
+  font-size: 26px;
+}
+.card {
+  min-height: 160px;
+  margin-bottom: 15px;
+}
+.card.disabled {
+  pointer-events: none;
+  background-color: #fff;
+}
+.card.disabled::after {
+  background: #ff4545;
+}
+.card:hover {
+  border-color: #d83f87;
+}
+.error {
+  font-size: 12px;
+  font-style: italic;
+  color: #ff4545;
+}
+body {
+  font-size: 14px;
+}
+.space, .space-10, .space-20, .space-30, .space-40, .space-50 {
+  width: 100%;
+  background-color: transparent;
+}
+.space-10 {
+  height: 10px;
+}
+.space-20 {
+  height: 20px;
+}
+.space-30 {
+  height: 30px;
+}
+.space-40 {
+  height: 40px;
+}
+.space-50 {
+  height: 50px;
+}
+.card {
+  min-height: 330px;
+}
+
