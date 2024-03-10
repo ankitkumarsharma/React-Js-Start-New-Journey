@@ -3,7 +3,7 @@ import Body from './components/Body';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App m-4">
       <Body/>
     </div>
   );

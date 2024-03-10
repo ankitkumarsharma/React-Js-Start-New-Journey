@@ -1,11 +1,11 @@
 export const tabsData = [
     {
-        label:'Home',
+        label:'Form Exp 1',
         id:1,
         show: true
     },
     {
-        label:'About',
+        label:'Form CRUD',
         id:2,
         show: false
     },

@@ -2,7 +2,7 @@ import './FormCrudTable.css';
 
 const FormCrudTable = ({ data, onEdit, onDelete }) => {
     const tableRow = data.map((row, index) => (
-        <tr>
+        <tr key={index}>
             <td>{index + 1}</td>
             <td>{row.name}</td>
             <td>{row.email}</td>

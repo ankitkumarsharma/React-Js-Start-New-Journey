@@ -14,16 +14,29 @@ const FormCrud = () => {
     const [table, setTable] = useState([]);
     const [isedit, setIsedit] = useState(false);
     const [editindex, setEditindex] = useState(null);
-    const onSubmit = (e) => {
-        e.preventDefault();
+    const [invalidForm, setInvalidForm] = useState(true);
+    const onSubmit = () => {
         let formObj = {
             name: name,
             email: email,
             mobile: mobile,
             password: password
         };
-        setTable([...table, formObj]);
-        resetForm();
+        checkFormValid(formObj);
+        if (!invalidForm) {
+            setTable([...table, formObj]);
+            resetForm();
+            setInvalidForm(true);
+        }
+    }
+    const checkFormValid = (obj) => {
+        Object.keys(obj).map((key) => {
+            if (obj[key] == '') {
+                setInvalidForm(true);
+            } else {
+                setInvalidForm(false)
+            }
+        })
     }
     const updateRow = () => {
         let formObj = {
@@ -111,6 +124,7 @@ const FormCrud = () => {
                                     </li>
                                 </ul>
                             </form>
+                            {invalidForm ? <p className='error'>Form is invalid, All fields are required!!!</p> : ''}
                         </Card>
                     </Column>
                     <Column>
