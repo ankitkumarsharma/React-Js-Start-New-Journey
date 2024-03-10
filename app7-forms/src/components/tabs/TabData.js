@@ -1,13 +1,13 @@
 import FormCrud from "../form-crud/FormCrud";
-import FormExp1 from "../form-exp-1/FormExp1";
+import FormCrud2 from "../form-crud2/FormCrud2"; 
 
 const TabData = ({item}) => {
     switch (item.id) {
         case 1:
-            return <FormExp1 />
+            return <FormCrud />
             break;
         case 2:
-            return <FormCrud />
+            return <FormCrud2 />
             break;
         default:
             return 'No Data'

@@ -1,0 +1,29 @@
+.table-responsive .table {
+    width: 100%;
+}
+
+.table-responsive .table tr td {
+    padding: 5px;
+}
+
+.table-responsive .table tr td ul {
+    padding: 0px;
+    margin: 0px;
+}
+
+.table-responsive .table tr td ul li button {
+    cursor: pointer;
+    background: #d83f87;
+    padding: 3px;
+    display: inline-block;
+    width: 60px;
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+    border-color: #d83f87;
+}
+
+.table-responsive .table tr td ul li button.trash {
+    background: #ff4545;
+    border-color: #ff4545;
+}
