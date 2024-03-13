@@ -4,52 +4,33 @@ import Card from "../../shared-components/layout/Card";
 import ContainerRowCol from "../../shared-components/layout/ContainerRowCol";
 import Row from '../../shared-components/layout/Row';
 import Column from '../../shared-components/layout/Column';
-import FormCrudTable from './FormCrudTable';
+import FormCrud3Table from './FormCrud3ValidationTable';
 
-const FormCrud = () => {
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [mobile, setMobile] = useState("");
-    const [password, setPassword] = useState("");
+const FormCrud3Validation = () => {
+    let formObject = {
+        name:'',
+        email:'',
+        mobile:'',
+        password:''
+    }
+    const [form, setForm] = useState(formObject);
+    
     const [table, setTable] = useState([]);
     const [isedit, setIsedit] = useState(false);
-    const [editindex, setEditindex] = useState(null);
+    const [editindex, setEditindex] = useState(null); 
 
-    const validateForm = () => {
-        if (name.length === 0) {
-            alert("Invalid Form, First Name can not be empty!");
-            return;
-        }
-        if (email.length == 0) {
-            alert('Invalid Form, Email Address can not be empty')
-            return
-        }
-        if (password.length < 5) {
-            alert(
-                'Invalid Form, Password must contain greater than or equal to 5 characters.',
-            )
-            return
-        }
-        alert('Form is valid');
-        let formObj = {
-            name: name,
-            email: email,
-            mobile: mobile,
-            password: password
-        };
-        setTable([...table, formObj]);
-        resetForm();
+    const getFormControlValue = (control,value)=>{
+        form[control] = value;
+        setForm({...form});
     }
-
+    const onSubmit = () => {
+            setTable([...table, form]);
+            resetForm();
+    }
+   
     const updateRow = () => {
-        let formObj = {
-            name: name,
-            email: email,
-            mobile: mobile,
-            password: password
-        };
         let updateTable = [...table];
-        updateTable[editindex] = { ...formObj };
+        updateTable[editindex] = { ...form };
         setTable(updateTable);
         setIsedit(false);
         resetForm();
@@ -65,17 +46,17 @@ const FormCrud = () => {
         setTable(updateTable);
     }
     const resetForm = () => {
-        setName('');
-        setEmail('');
-        setMobile('');
-        setPassword('');
+        Object.keys(form).map((key) => {
+            form[key] = '';
+        });
+        setForm({...form});
     }
 
     const setFormValue = (data) => {
-        setName(data.name);
-        setEmail(data.email);
-        setMobile(data.mobile);
-        setPassword(data.password);
+        Object.keys(data).map((key) => {
+            form[key] = data[key];
+        })
+        setForm({...form});
     }
 
     return (
@@ -84,41 +65,41 @@ const FormCrud = () => {
                 <Row>
                     <Column>
                         <Card>
-                            <h4 className="ak-sub-title">Form</h4>
+                            <h4 className="ak-sub-title">Form CRUD 3 with Validation</h4>
                             <form>
                                 <Input
-                                    value={name}
+                                    value={form.name}
                                     label="Name"
                                     id="an"
                                     type="text"
-                                    onChange={(e) => setName(e.target.value)}
+                                    onChange={(e) => getFormControlValue('name',e.target.value)}
                                 />
                                 <Input
-                                    value={email}
+                                    value={form.email}
                                     label="Email"
                                     id="em"
                                     type="email"
-                                    onChange={(e) => setEmail(e.target.value)}
+                                    onChange={(e) => getFormControlValue('email',e.target.value)}
                                 />
                                 <Input
-                                    value={mobile}
+                                    value={form.mobile}
                                     label="Mobile"
                                     id="mo"
                                     type="number"
-                                    onChange={(e) => setMobile(e.target.value)}
+                                    onChange={(e) => getFormControlValue('mobile',e.target.value)}
                                 />
                                 <Input
-                                    value={password}
+                                    value={form.password}
                                     label="Password"
                                     id="pw"
                                     type="password"
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    onChange={(e) => getFormControlValue('password',e.target.value)}
                                 />
                                 <ul className="list-inline">
                                     <li className="list-inline-item">
                                         {
                                             !isedit ?
-                                                <button onClick={() => validateForm()} className="btn primary-btn" type="button">Submit</button> :
+                                                <button onClick={onSubmit} className="btn primary-btn" type="button">Submit</button> :
                                                 <button onClick={updateRow} className="btn primary-btn" type="button">Update</button>
                                         }
                                     </li>
@@ -126,12 +107,12 @@ const FormCrud = () => {
                                         <button className="btn secondary-btn" onClick={resetForm} type="button">Reset</button>
                                     </li>
                                 </ul>
-                            </form>
-                        </Card>
+                            </form> 
+                            </Card>
                     </Column>
                     <Column>
                         <Card>
-                            <FormCrudTable onEdit={editRow} onDelete={deleteRow} data={table} />
+                            <FormCrud3Table onEdit={editRow} onDelete={deleteRow} data={table} />
                         </Card>
                     </Column>
                 </Row >
@@ -140,4 +121,4 @@ const FormCrud = () => {
     );
 }
 
-export default FormCrud;
+export default FormCrud3Validation;

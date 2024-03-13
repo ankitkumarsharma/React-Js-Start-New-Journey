@@ -10,7 +10,7 @@ export const tabsData = [
         show: false
     },
     {
-        label:'Contact',
+        label:'Form CRUD with Validations',
         id:3,
         show: false
     }
