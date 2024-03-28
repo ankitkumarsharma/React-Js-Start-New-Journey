@@ -8,26 +8,27 @@ import FormCrud2Table from './FormCrud2Table';
 
 const FormCrud2 = () => {
     let formObject = {
-        name:'',
-        email:'',
-        mobile:'',
-        password:''
+        name: '',
+        email: '',
+        mobile: '',
+        password: ''
     }
     const [form, setForm] = useState(formObject);
-    
+
     const [table, setTable] = useState([]);
     const [isedit, setIsedit] = useState(false);
-    const [editindex, setEditindex] = useState(null); 
+    const [editindex, setEditindex] = useState(null);
 
-    const getFormControlValue = (control,value)=>{
+    const getFormControlValue = (control, value) => {
         form[control] = value;
-        setForm({...form});
+        setForm({ ...form });
     }
     const onSubmit = () => {
-            setTable([...table, form]);
-            resetForm();
+        let formObj = { ...form }
+        setTable([...table, formObj]);
+        resetForm();
     }
-   
+
     const updateRow = () => {
         let updateTable = [...table];
         updateTable[editindex] = { ...form };
@@ -49,14 +50,14 @@ const FormCrud2 = () => {
         Object.keys(form).map((key) => {
             form[key] = '';
         });
-        setForm({...form});
+        setForm({ ...form });
     }
 
     const setFormValue = (data) => {
         Object.keys(data).map((key) => {
             form[key] = data[key];
         })
-        setForm({...form});
+        setForm({ ...form });
     }
 
     return (
@@ -72,28 +73,28 @@ const FormCrud2 = () => {
                                     label="Name"
                                     id="an"
                                     type="text"
-                                    onChange={(e) => getFormControlValue('name',e.target.value)}
+                                    onChange={(e) => getFormControlValue('name', e.target.value)}
                                 />
                                 <Input
                                     value={form.email}
                                     label="Email"
                                     id="em"
                                     type="email"
-                                    onChange={(e) => getFormControlValue('email',e.target.value)}
+                                    onChange={(e) => getFormControlValue('email', e.target.value)}
                                 />
                                 <Input
                                     value={form.mobile}
                                     label="Mobile"
                                     id="mo"
                                     type="number"
-                                    onChange={(e) => getFormControlValue('mobile',e.target.value)}
+                                    onChange={(e) => getFormControlValue('mobile', e.target.value)}
                                 />
                                 <Input
                                     value={form.password}
                                     label="Password"
                                     id="pw"
                                     type="password"
-                                    onChange={(e) => getFormControlValue('password',e.target.value)}
+                                    onChange={(e) => getFormControlValue('password', e.target.value)}
                                 />
                                 <ul className="list-inline">
                                     <li className="list-inline-item">
@@ -107,8 +108,8 @@ const FormCrud2 = () => {
                                         <button className="btn secondary-btn" onClick={resetForm} type="button">Reset</button>
                                     </li>
                                 </ul>
-                            </form> 
-                            </Card>
+                            </form>
+                        </Card>
                     </Column>
                     <Column>
                         <Card>

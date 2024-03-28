@@ -5,29 +5,29 @@ import ContainerRowCol from "../../shared-components/layout/ContainerRowCol";
 import Row from '../../shared-components/layout/Row';
 import Column from '../../shared-components/layout/Column';
 import FormCrudTable from './FormCrudTable';
+import { useForm } from "react-hook-form";
+import { FORM_OBJ } from '../../utils/utils';
 
 const FormCrud = () => {
-    let formObject = {
-        name:'',
-        email:'',
-        mobile:'',
-        password:''
-    }
-    const [form, setForm] = useState(formObject);
-    
+    const [form, setForm] = useState(FORM_OBJ);
+
     const [table, setTable] = useState([]);
     const [isedit, setIsedit] = useState(false);
-    const [editindex, setEditindex] = useState(null); 
+    const [editindex, setEditindex] = useState(null);
 
-    const getFormControlValue = (control,value)=>{
+    const { register, handleSubmit, reset, formState: {errors}, } = useForm();
+
+
+    const getFormControlValue = (control, value) => {
         form[control] = value;
-        setForm({...form});
+        setForm({ ...form });
     }
-    const onSubmit = () => {
-            setTable([...table, form]);
-            resetForm();
+    const onSubmit = (data) => {
+        let formObj = { ...data }
+        setTable([...table, formObj]);
+        reset();
     }
-   
+
     const updateRow = () => {
         let updateTable = [...table];
         updateTable[editindex] = { ...form };
@@ -47,18 +47,17 @@ const FormCrud = () => {
     }
     const resetForm = () => {
         Object.keys(form).map((key) => {
-            form[key] = '';
+            return form[key] = '';
         });
-        setForm({...form});
+        setForm({ ...form });
     }
 
     const setFormValue = (data) => {
         Object.keys(data).map((key) => {
-            form[key] = data[key];
+            return form[key] = data[key];
         })
-        setForm({...form});
+        setForm({ ...form });
     }
-
     return (
         <>
             <ContainerRowCol colName="col">
@@ -66,49 +65,70 @@ const FormCrud = () => {
                     <Column>
                         <Card>
                             <h4 className="ak-sub-title">Form CRUD with React Hook Form</h4>
-                            <form>
+                            <form onSubmit={handleSubmit(onSubmit)}>
                                 <Input
-                                    value={form.name}
                                     label="Name"
                                     id="an"
                                     type="text"
-                                    onChange={(e) => getFormControlValue('name',e.target.value)}
+                                    name="name"
+                                    register={register}
+                                    errors={errors}
+                                    isRequired={true}
+                                    maxLength={40}
+                                    minLength={5}
+                                    pattern={null}
                                 />
                                 <Input
-                                    value={form.email}
                                     label="Email"
                                     id="em"
                                     type="email"
-                                    onChange={(e) => getFormControlValue('email',e.target.value)}
+                                    name="email"
+                                    register={register}
+                                    errors={errors}
+                                    isRequired={true}
+                                    maxLength={20}
+                                    minLength={8}
+                                    pattern={null}
                                 />
                                 <Input
-                                    value={form.mobile}
                                     label="Mobile"
                                     id="mo"
                                     type="number"
-                                    onChange={(e) => getFormControlValue('mobile',e.target.value)}
+                                    name="mobile"
+                                    register={register}
+                                    errors={errors}
+                                    isRequired={true}
+                                    maxLength={10}
+                                    minLength={3}
+                                    pattern={null}
                                 />
                                 <Input
-                                    value={form.password}
                                     label="Password"
                                     id="pw"
                                     type="password"
-                                    onChange={(e) => getFormControlValue('password',e.target.value)}
+                                    name="password"
+                                    register={register}
+                                    errors={errors}
+                                    isRequired={true}
+                                    maxLength={10}
+                                    minLength={8}
+                                    pattern={null}
                                 />
                                 <ul className="list-inline">
                                     <li className="list-inline-item">
-                                        {
+                                        {/* {
                                             !isedit ?
                                                 <button onClick={onSubmit} className="btn primary-btn" type="button">Submit</button> :
                                                 <button onClick={updateRow} className="btn primary-btn" type="button">Update</button>
-                                        }
+                                        } */}
+                                        <button className="btn primary-btn" type="submit">Submit</button> 
                                     </li>
                                     <li className="list-inline-item">
-                                        <button className="btn secondary-btn" onClick={resetForm} type="button">Reset</button>
+                                        <button className="btn secondary-btn" onClick={() => reset()} type="button">Reset</button>
                                     </li>
                                 </ul>
-                            </form> 
-                            </Card>
+                            </form>
+                        </Card>
                     </Column>
                     <Column>
                         <Card>
