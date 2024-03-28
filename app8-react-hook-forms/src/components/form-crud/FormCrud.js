@@ -6,22 +6,15 @@ import Row from '../../shared-components/layout/Row';
 import Column from '../../shared-components/layout/Column';
 import FormCrudTable from './FormCrudTable';
 import { useForm } from "react-hook-form";
-import { FORM_OBJ } from '../../utils/utils';
+import { FORM_FIELDS_ARR, FORM_OBJ } from '../../utils/utils';
 
 const FormCrud = () => {
-    const [form, setForm] = useState(FORM_OBJ);
-
     const [table, setTable] = useState([]);
     const [isedit, setIsedit] = useState(false);
     const [editindex, setEditindex] = useState(null);
 
-    const { register, handleSubmit, reset, formState: {errors}, } = useForm();
+    const { register, setValue, getValues, handleSubmit, reset, formState: { errors, isValid } } = useForm();
 
-
-    const getFormControlValue = (control, value) => {
-        form[control] = value;
-        setForm({ ...form });
-    }
     const onSubmit = (data) => {
         let formObj = { ...data }
         setTable([...table, formObj]);
@@ -29,14 +22,22 @@ const FormCrud = () => {
     }
 
     const updateRow = () => {
-        let updateTable = [...table];
-        updateTable[editindex] = { ...form };
-        setTable(updateTable);
-        setIsedit(false);
-        resetForm();
+        if (isValid) {
+            let updateTable = [...table];
+            updateTable[editindex] = { ...getValues() };
+            setTable(updateTable);
+            setIsedit(false);
+            reset();
+        }
     }
     const editRow = (index) => {
-        setFormValue(table[index]);
+        let fields = FORM_FIELDS_ARR;
+        fields.forEach(field => setValue(field, table[index][field],
+            {
+                shouldDirty: true,
+                shouldTouch: true
+            }
+        ));
         setEditindex(index);
         setIsedit(true);
     }
@@ -45,19 +46,7 @@ const FormCrud = () => {
         updateTable.splice(index, 1)
         setTable(updateTable);
     }
-    const resetForm = () => {
-        Object.keys(form).map((key) => {
-            return form[key] = '';
-        });
-        setForm({ ...form });
-    }
 
-    const setFormValue = (data) => {
-        Object.keys(data).map((key) => {
-            return form[key] = data[key];
-        })
-        setForm({ ...form });
-    }
     return (
         <>
             <ContainerRowCol colName="col">
@@ -81,19 +70,19 @@ const FormCrud = () => {
                                 <Input
                                     label="Email"
                                     id="em"
-                                    type="email"
+                                    type="text"
                                     name="email"
                                     register={register}
                                     errors={errors}
                                     isRequired={true}
-                                    maxLength={20}
+                                    maxLength={40}
                                     minLength={8}
                                     pattern={null}
                                 />
                                 <Input
                                     label="Mobile"
                                     id="mo"
-                                    type="number"
+                                    type="text"
                                     name="mobile"
                                     register={register}
                                     errors={errors}
@@ -116,12 +105,11 @@ const FormCrud = () => {
                                 />
                                 <ul className="list-inline">
                                     <li className="list-inline-item">
-                                        {/* {
+                                        {
                                             !isedit ?
-                                                <button onClick={onSubmit} className="btn primary-btn" type="button">Submit</button> :
+                                                <button className="btn primary-btn" type="submit">Submit</button> :
                                                 <button onClick={updateRow} className="btn primary-btn" type="button">Update</button>
-                                        } */}
-                                        <button className="btn primary-btn" type="submit">Submit</button> 
+                                        }
                                     </li>
                                     <li className="list-inline-item">
                                         <button className="btn secondary-btn" onClick={() => reset()} type="button">Reset</button>
