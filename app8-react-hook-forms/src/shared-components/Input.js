@@ -1,4 +1,4 @@
-const Input = ({ label, id, type, name, placeholder, register, errors, isRequired, maxLength, minLength, pattern }) => {
+const Input = ({ label, id, type, name, placeholder, register, errors, isRequired, maxLength, minLength, pattern, patternMessage }) => {
     return (
         <div className="row mb-3 form-group">
             <div className="col-4">
@@ -20,7 +20,7 @@ const Input = ({ label, id, type, name, placeholder, register, errors, isRequire
                     },
                     pattern: {
                         value: pattern,
-                        message: `${label} must be in proper format.`
+                        message: pattern != null ? patternMessage: ''
                     },
                 })} type={type} placeholder={placeholder} />
                 <p className="error mb-0">

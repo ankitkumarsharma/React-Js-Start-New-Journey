@@ -6,7 +6,7 @@ import Row from '../../shared-components/layout/Row';
 import Column from '../../shared-components/layout/Column';
 import FormCrudTable from './FormCrudTable';
 import { useForm } from "react-hook-form";
-import { FORM_FIELDS_ARR, FORM_OBJ } from '../../utils/utils';
+import { ERRORS, FORM_FIELDS_ARR, FORM_OBJ, REGX_PATTERN } from '../../utils/utils';
 
 const FormCrud = () => {
     const [table, setTable] = useState([]);
@@ -65,7 +65,7 @@ const FormCrud = () => {
                                     isRequired={true}
                                     maxLength={40}
                                     minLength={5}
-                                    pattern={null}
+                                    pattern= {null}
                                 />
                                 <Input
                                     label="Email"
@@ -77,7 +77,8 @@ const FormCrud = () => {
                                     isRequired={true}
                                     maxLength={40}
                                     minLength={8}
-                                    pattern={null}
+                                    pattern= {REGX_PATTERN.email}
+                                    patternMessage={ERRORS.email}
                                 />
                                 <Input
                                     label="Mobile"
@@ -89,7 +90,8 @@ const FormCrud = () => {
                                     isRequired={true}
                                     maxLength={10}
                                     minLength={3}
-                                    pattern={null}
+                                    pattern={REGX_PATTERN.mobile}
+                                    patternMessage={ERRORS.mobile}
                                 />
                                 <Input
                                     label="Password"
@@ -101,7 +103,8 @@ const FormCrud = () => {
                                     isRequired={true}
                                     maxLength={10}
                                     minLength={8}
-                                    pattern={null}
+                                    pattern={REGX_PATTERN.password}
+                                    patternMessage={ERRORS.password}
                                 />
                                 <ul className="list-inline">
                                     <li className="list-inline-item">
