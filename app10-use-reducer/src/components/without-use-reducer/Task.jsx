@@ -34,7 +34,7 @@ const Task = ({ task, onChange, onDelete }) => {
                     <Column>
                         {task.text}
                     </Column>
-                    <Column>
+                    <Column className="col-2">
                         <button onClick={() => setIsEditing(true)}>Edit</button>
                     </Column>
                 </Row>
@@ -49,7 +49,7 @@ const Task = ({ task, onChange, onDelete }) => {
                 <Column>
                     {taskContent}
                 </Column>
-                <Column>
+                <Column className="col-2 mt-3">
                     <button onClick={() => onDelete(task.id)}>Delete</button>
                 </Column>
             </Row>

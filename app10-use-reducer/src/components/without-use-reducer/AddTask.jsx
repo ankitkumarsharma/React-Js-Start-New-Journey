@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const AddTask = ({onAddTask}) => {
+const AddTask = ({addTask}) => {
     const [task, setTask] = useState('');
   return (
     <>
@@ -12,7 +12,7 @@ const AddTask = ({onAddTask}) => {
       <button
         onClick={() => {
           setTask('');
-          onAddTask(task);
+          addTask(task);
         }}>
         Add
       </button>
