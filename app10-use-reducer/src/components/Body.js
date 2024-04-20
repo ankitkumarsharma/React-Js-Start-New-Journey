@@ -3,6 +3,7 @@ import Column from "../shared-components/layout/Column";
 import Container from "../shared-components/layout/Container";
 import Row from "../shared-components/layout/Row";
 import TaskApp from "./without-use-reducer/TaskApp";
+import TaskAppReducer from "./with-use-reducer-hook/TaskAppReducer";
 
 const Body = () => {
     return  <>
@@ -10,7 +11,8 @@ const Body = () => {
             <Row>
                 <Column>
                     <Card>
-                        <TaskApp/>
+                        {/* <TaskApp/> */}
+                        <TaskAppReducer/>
                     </Card>
                 </Column>
             </Row>
