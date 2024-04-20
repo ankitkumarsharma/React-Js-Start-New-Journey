@@ -30,3 +30,13 @@ In this lession, we learned forms CRUD with validations from React -hook-forms l
 
 - <b>App 9 > Basic Accordian </b> <br/>
 In this lession, we learned how we can create basic accordian in React JS.
+
+- <b>App 10 > useReducer Hooks </b> <br/>
+In this lession , we learned how we can use useReducer Hooks rather then useState Hooks in React JS. I created CRUD with both for differenciate.
+
+- <b>App 11 > More Hooks Learning </b> <br/>
+In this lession , we learned multiple hooks examples like useContext, useReducer, useEffects and more.
+    - <b>useContext </b> : We learned how we can use useContext Hooks.
+
+
+
