@@ -1,4 +1,4 @@
-import Card from "../../../shared-components/layout/Card";
+import Card from "../../../../shared-components/layout/Card";
 import { LevelContext } from "./LevelContext";
 
 const Section = ({children, level})=>{
