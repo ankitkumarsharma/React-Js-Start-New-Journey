@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Row from "../../shared-components/layout/Row";
 import Column from "../../shared-components/layout/Column";
+import { TaskDispatchContext } from "./TaskContext";
 
-const Task = ({ task, onChange, onDelete }) => {
+const Task = ({ task }) => {
     const [isEditing, setIsEditing] = useState(false);
+    const dispatch = useContext(TaskDispatchContext);
     let taskContent;
     if (isEditing) {
         taskContent = (
@@ -13,10 +15,13 @@ const Task = ({ task, onChange, onDelete }) => {
                         <input
                             value={task.task}
                             onChange={(e) => {
-                                onChange({
-                                    ...task,
-                                    task: e.target.value,
-                                });
+                                dispatch({
+                                    type: 'update',
+                                    task: {
+                                        ...task,
+                                        task: e.target.value,
+                                    }
+                                })
                             }}
                         />
                     </Column>
@@ -50,7 +55,12 @@ const Task = ({ task, onChange, onDelete }) => {
                     {taskContent}
                 </Column>
                 <Column className="col-2 mt-3">
-                    <button onClick={() => onDelete(task.id)}>Delete</button>
+                    <button onClick={() =>
+                        dispatch({
+                            type: 'delete',
+                            id: task.id,
+                        })
+                    }>Delete</button>
                 </Column>
             </Row>
 

@@ -17,8 +17,8 @@ const Body = () => {
                         {/* <Page1/> */} 
                         {/* <Page2/> */}
                         {/* <PostApp1/> */}
-                        <PostApp2/>
-                        {/* <TaskAppReducer/> */}
+                        {/* <PostApp2/> */}
+                        <TaskAppReducer/>
                     </Card>
                 </Column>
             </Row>

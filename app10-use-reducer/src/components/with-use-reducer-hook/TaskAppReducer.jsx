@@ -32,15 +32,8 @@ const TaskAppReducer = () => {
     return (
         <>
             <h1>CRUD with Use of useState Hook</h1>
-            <Row>
-                <Column>
-                    <AddTask addTask={addTask} />
-                </Column>
-                <Column>
-                    <TaskList tasks={tasks} onChangeTask={changeTask} onDeleteTask={deleteTask} />
-                </Column>
-            </Row>
-
+            <AddTask addTask={addTask} />
+            <TaskList tasks={tasks} onChangeTask={changeTask} onDeleteTask={deleteTask} />
         </>
     )
 }

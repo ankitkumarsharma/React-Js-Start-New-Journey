@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { TaskDispatchContext } from "./TaskContext";
+import { NEXT_ID } from "./utils";
 
-const AddTask = ({addTask}) => {
-    const [task, setTask] = useState('');
+const AddTask = () => {
+  const [task, setTask] = useState('');
+  const dispatch = useContext(TaskDispatchContext);
+  let nextId = NEXT_ID;
   return (
     <>
       <input
@@ -12,7 +16,11 @@ const AddTask = ({addTask}) => {
       <button
         onClick={() => {
           setTask('');
-          addTask(task);
+          dispatch({
+            type: 'add',
+            id: nextId++,
+            task: task,
+          })
         }}>
         Add
       </button>
