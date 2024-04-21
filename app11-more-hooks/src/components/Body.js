@@ -8,6 +8,8 @@ import Page1 from "./use-context/example1/without-it/Page1";
 import PostApp2 from "./use-context/example2/with-it/PostApp2";
 import PostApp1 from "./use-context/example2/without-it/PostApp1";
 import TaskAppReducer from "./use-reducer-with-use-context/TaskAppReducer";
+import CountUseRefWithItExp1 from "./use-ref/example1/with-it/CountUseRefWithItExp1";
+import CountUseRefWithItExp2 from "./use-ref/example2/with-it/CountUseRefWithItExp2";
 
 const Body = () => {
     return  <>
@@ -20,7 +22,9 @@ const Body = () => {
                         {/* <PostApp1/> */}
                         {/* <PostApp2/> */}
                         {/* <TaskAppReducer/> */}
-                        <TaskAppCustomHookExp1/>
+                        {/* <TaskAppCustomHookExp1/> */}
+                        {/* <CountUseRefWithItExp1/> */}
+                        <CountUseRefWithItExp2/>
                     </Card>
                 </Column>
             </Row>

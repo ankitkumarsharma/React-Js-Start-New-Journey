@@ -39,6 +39,7 @@ In this lession , we learned multiple hooks examples like useContext, useReducer
     - <b>useContext </b> : We learned how we can use useContext Hooks with multiple examples. useContext hook is a React hook that allows you to share data between components without having to pass props down through the component tree. (<b>Create</b> the context., <b>Put</b> state and dispatch into context., <b>Use</b> context anywhere in the tree.)
     - <b>useContext with useReducer </b>: We will learn about both hooks in this lession, how we can use reducer with useContext hook.
     - <b> Custom Hooks </b>: Sharing logic between components, we will learn, how we can create custom hooks and use with components with multiple examples
+    - <b> useRef Hook </b>: When you want a component to “remember” some information, but you don’t want that information to trigger new renders, you can use a ref. We will learn how we stop re-rendring of data with <b>useRef</b>.
 
 
 
