@@ -35,6 +35,9 @@ const VideoPlayer = ({src, isPlaying})=>{
     //     // This runs on mount *and also* if either a or b have changed since the last render
     //   }, [a, b]);
 
+    // The code inside the Effect does not use any props or state, so your dependency array is [] (empty). 
+    // This tells React to only run this code when the component “mounts”, i.e. appears on the screen for the first time.
+
     
     return <video ref={ref} src={src} loop playsInline></video>
 }
