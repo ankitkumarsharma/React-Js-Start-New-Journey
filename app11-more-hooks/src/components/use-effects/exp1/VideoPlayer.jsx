@@ -20,6 +20,7 @@ const VideoPlayer = ({src, isPlaying})=>{
     //         ref.current.pause();
     //     }
     // },[isPlaying]);
+    
     // useEffect(()=>{...},[]); use blank array as 2nd argument for skip unnecessarily re-running the Effect
 
 
