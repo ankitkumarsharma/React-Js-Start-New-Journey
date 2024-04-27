@@ -40,6 +40,7 @@ In this lession , we learned multiple hooks examples like useContext, useReducer
     - <b>useContext with useReducer </b>: We will learn about both hooks in this lession, how we can use reducer with useContext hook.
     - <b> Custom Hooks </b>: Sharing logic between components, we will learn, how we can create custom hooks and use with components with multiple examples
     - <b> useRef Hook </b>: When you want a component to “remember” some information, but you don’t want that information to trigger new renders, you can use a ref. We will learn how we stop re-rendring of data with <b>useRef</b>.
-
+- <b>App 12 > Routing in React </b> <br/>
+How we can use routing and its features in React, will learn.
 
 
