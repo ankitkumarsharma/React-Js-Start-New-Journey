@@ -3,7 +3,6 @@ export const MENU_LIST = [
         id: 1,
         title: 'Home',
         path: '/',
-        exact: true
     },
     {
         id: 2,
@@ -19,5 +18,10 @@ export const MENU_LIST = [
         id: 4,
         title: 'Services',
         path: '/services'
+    },
+    {
+        id: 5,
+        title: 'Product',
+        path: '/product/2'
     }
 ]
