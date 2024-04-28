@@ -1,5 +1,7 @@
+import Heading from "../layout/Heading";
+
 const AboutUs = ()=>{
-    return <h1>About Us Page</h1>
+    return <Heading level={1}>About Us Page</Heading>
 }
 
 export default AboutUs;

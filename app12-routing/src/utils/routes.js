@@ -7,37 +7,45 @@ import Services from "../pages/Services";
 import PageNotFound from "../pages/PageNotFound";
 import ErrorPage from "../layout/ErrorPage";
 import Product from "../pages/Product";
+import Crud from "../pages/Crud";
 
 export const router = createBrowserRouter([
-    {
-      path: '/',
-      element: <LandingPageLayout/>,
-      errorElement: <ErrorPage/>, // we are not using page not found feature here, using this latest error feature, we can use page not found also rather than this, as below mention in children routes.
-      children: [
-        {
-          path: '/',
-          element: <Home/>,
-        },
-        {
-          path: '/about',
-          element: <AboutUs/>
-        },
-        {
-          path: '/contact',
-          element: <ContactUs/>
-        },
-        {
-          path: '/services',
-          element: <Services/>
-        },
-        {
-            path: '/product/:id',
-            element: <Product/>
-          },
-        // {
-        //   path: '*',
-        //   element: <PageNotFound/>
-        // }
-      ]
-    },
-  ]);
+  {
+    path: '/',
+    element: <LandingPageLayout />,
+    errorElement: <ErrorPage />, // we are not using page not found feature here, using this latest error feature, we can use page not found also rather than this, as below mention in children routes.
+    children: [
+      {
+        path: '/',
+        element: <Home />,
+      },
+      {
+        path: '/about',
+        element: <AboutUs />
+      },
+      {
+        path: '/contact',
+        element: <ContactUs />
+      },
+      {
+        path: '/services',
+        element: <Services />
+      },
+      {
+        path: '/product/:id',
+        element: <Product />
+      },
+      {
+        path: '/crud',
+        element: <Crud />,
+        children:[
+          
+        ]
+      },
+      // {
+      //   path: '*',
+      //   element: <PageNotFound/>
+      // }
+    ]
+  },
+]);

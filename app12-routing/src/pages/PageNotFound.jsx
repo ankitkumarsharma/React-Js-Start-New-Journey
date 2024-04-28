@@ -1,5 +1,7 @@
+import Heading from "../layout/Heading";
+
 const PageNotFound = ()=>{
-    return <h1>Page Not Found Page</h1>
+    return <Heading level={1}>Page Not Found Page</Heading>
 }
 
 export default PageNotFound;

@@ -1,5 +1,7 @@
+import Heading from "../layout/Heading";
+
 const Home = ()=>{
-    return <h1>Home Page</h1>
+    return <Heading level={1}>Home Page</Heading>
 }
 
 export default Home;

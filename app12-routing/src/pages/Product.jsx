@@ -1,4 +1,5 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import Heading from "../layout/Heading";
 
 const Product = ()=>{
     const routeParams = useParams();
@@ -17,9 +18,12 @@ const Product = ()=>{
       };
     return (
         <>
-            <h1>Product Page</h1>
-            <h2>Product ID: {routeParams.id}</h2>
-            <button onClick={handleClick}>Go to product 3</button>
+            <Heading level={1}>Product Page</Heading>
+            <h2>Route ID: {routeParams.id}</h2>
+            <h2>Product Color: {getData?.color}</h2>
+            <h2>Product ID: {getData?.id}</h2>
+            <button className="bg-gray-500 text-white p-2 rounded" onClick={handleClick}>Go to product 3</button>
+            
         </>
     );
 }

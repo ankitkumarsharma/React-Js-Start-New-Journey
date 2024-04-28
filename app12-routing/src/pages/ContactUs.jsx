@@ -1,5 +1,7 @@
+import Heading from "../layout/Heading";
+
 const ContactUs = ()=>{
-    return <h1>Contact Us Page</h1>
+    return <Heading level={1}>Contact Us Page</Heading>
 }
 
 export default ContactUs;

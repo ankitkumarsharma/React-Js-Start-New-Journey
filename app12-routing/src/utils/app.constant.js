@@ -23,5 +23,10 @@ export const MENU_LIST = [
         id: 5,
         title: 'Product',
         path: '/product/2'
+    },
+    {
+        id: 6,
+        title: 'CRUD',
+        path: '/crud'
     }
 ]

@@ -1,5 +1,7 @@
+import Heading from "../layout/Heading";
+
 const Services = ()=>{
-    return <h1>Services Page</h1>
+    return <Heading level={1}>Services Page</Heading>
 }
 
 export default Services;
