@@ -1,25 +1,52 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Button from "../../layout/Button";
 import Heading from "../../layout/Heading";
+import { useEffect, useState } from "react";
+import { TABLE_LIST } from "../../utils/app.constant";
 
-const List = ({ data = [], onEdit, onDelete }) => {
+const List = () => {
     let navigate = useNavigate();
-    const handleClick = () => {
+    let location = useLocation();
+    const [table, setTable] = useState(TABLE_LIST);
+    const navigationClick = () => {
         navigate("/list/add-list");
+    };
+    const onEdit = (index) => {
+        navigate("/list/edit-list", { state: { isEdit: true, editIndex: index, data: table[index] } });
     }
-    const tableRow = data.map((row, index) => (
+    useEffect(() => {
+        if (location.state?.index) {
+            let updateTable = [...table];
+            updateTable[location.state.index] = location.state.data;
+            setTable(updateTable);
+        } else {
+            if (location.state) {
+                setTable([...table, location.state.data]);
+            }
+
+        }
+
+    }, []);
+
+    const onDelete = (index) => {
+        let updateTable = [...table];
+        updateTable.splice(index, 1)
+        setTable(updateTable);
+    }
+
+    const tableRow = table.map((row, index) => (
         <tr key={index}>
             <td>{index + 1}</td>
-            <td>{row.name}</td>
-            <td>{row.email}</td>
-            <td>{row.mobile}</td>
+            <td>{row?.name}</td>
+            <td>{row?.email}</td>
+            <td>{row?.mobile}</td>
             <td>
                 <ul className="list-inline">
                     <li className="list-inline-item">
-                        <button onClick={() => onEdit(index)} className="edit">Edit</button>
+                        <Button onClick={() => onEdit(index)} title="Edit" type="submit" />
                     </li>
                     <li className="list-inline-item">
-                        <button onClick={() => onDelete(index)} className="trash">Delete</button>
+                        <Button onClick={() => onDelete(index)} title="Delete" type="button" />
                     </li>
                 </ul>
             </td>
@@ -27,12 +54,12 @@ const List = ({ data = [], onEdit, onDelete }) => {
     ))
     return (
         <>
-            <Button onClick={handleClick} title="Add Row" />
+            <Button onClick={navigationClick} title="Add Row" />
             <Heading level={3}>Table List</Heading>
             {
-                data.length > 0 ?
-                    <div className="table-responsive">
-                        <table className="table">
+                table.length > 0 ?
+                    <div className="p-6 max-w-3xl mx-auto bg-white rounded-xl shadow-lg items-center space-x-2">
+                        <table className="w-full">
                             <tr>
                                 <th>Sr.No.</th>
                                 <th>Name</th>
@@ -43,6 +70,7 @@ const List = ({ data = [], onEdit, onDelete }) => {
                             {tableRow}
                         </table>
                     </div> :
+
                     <p className="error">No Data</p>
 
             }

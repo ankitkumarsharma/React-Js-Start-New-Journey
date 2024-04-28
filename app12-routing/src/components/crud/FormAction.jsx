@@ -1,48 +1,42 @@
-import Heading from "../../layout/Heading";
-import Input from "../../layout/Input";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { ERRORS, FORM_FIELDS_ARR, FORM_OBJ, REGX_PATTERN } from '../../utils/app.constant';
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "../../layout/Button";
+import Input from "../../layout/Input";
+import { ERRORS, FORM_FIELDS_ARR, REGX_PATTERN } from '../../utils/app.constant';
 
 
-const FormAction = () => {
+const FormAction = ({ isEdit, editIndex, editData }) => {
     const [table, setTable] = useState([]);
-    const [isedit, setIsedit] = useState(false);
-    const [editindex, setEditindex] = useState(null);
 
     const { register, setValue, getValues, handleSubmit, reset, formState: { errors, isValid } } = useForm();
-
+    let navigate = useNavigate();
     const onSubmit = (data) => {
         let formObj = { ...data }
-        setTable([...table, formObj]);
+        navigate("/list", { state: { data: formObj, index: null } });
         reset();
     }
 
     const updateRow = () => {
         if (isValid) {
-            let updateTable = [...table];
-            updateTable[editindex] = { ...getValues() };
-            setTable(updateTable);
-            setIsedit(false);
+            navigate("/list", { state: { data: { ...getValues() }, index: editIndex } });
             reset();
         }
     }
-    const editRow = (index) => {
-        let fields = FORM_FIELDS_ARR;
-        fields.forEach(field => setValue(field, table[index][field],
-            {
-                shouldDirty: true,
-                shouldTouch: true
-            }
-        ));
-        setEditindex(index);
-        setIsedit(true);
-    }
-    const deleteRow = (index) => {
-        let updateTable = [...table];
-        updateTable.splice(index, 1)
-        setTable(updateTable);
+    useEffect(() => {
+        handleEdit();
+    }, [])
+
+    const handleEdit = () => {
+        if (isEdit) {
+            let fields = FORM_FIELDS_ARR;
+            fields.forEach(field => setValue(field, editData[field],
+                {
+                    shouldDirty: true,
+                    shouldTouch: true
+                }
+            ));
+        }
     }
 
     return (
@@ -103,9 +97,9 @@ const FormAction = () => {
                     <div className="flex">
                         <div>
                             {
-                                !isedit ?
+                                !isEdit ?
                                     <Button title="Submit" type="submit" /> :
-                                    <Button onClick={updateRow} title="Update" type="button" />
+                                    <Button onClick={updateRow} title="Update" type="submit" />
                             }
                         </div>
                         <div className="ml-3">

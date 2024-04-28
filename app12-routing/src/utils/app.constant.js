@@ -49,3 +49,12 @@ export const ERRORS = {
     mobile: 'Mobile should be in proper format, start with 7,8,9 only!',
     password: 'Password should be minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character!'
 }
+
+export const TABLE_LIST = [
+    {
+        name: 'Ankit Sharma',
+        email: 'ankit@gmail.com',
+        mobile: '9876543210',
+        password: '',
+    }
+]

@@ -5,14 +5,14 @@ import FormAction from "./FormAction";
 
 const AddList = () => {
     let navigate = useNavigate();
-    const handleClick = () => {
+    const navigationClick = () => {
         navigate("/list");
     }
     return (
         <>
             <div className="flex">
                 <Heading level={3}>Add List</Heading>
-                <Button onClick={handleClick} title="Back to List" />
+                <Button onClick={navigationClick} title="Back to List" />
             </div>
             <FormAction />
         </>

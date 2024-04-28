@@ -6,12 +6,12 @@ const ErrorPage = () => {
     const error = useRouteError();
     console.error(error);
     let navigate = useNavigate();
-    const handleClick = () => {
+    const navigationClick = () => {
         navigate("/");
     }
     return (
         <div id="error-page" className="text-center">
-            <Button onClick={handleClick} title="Back to Home" />
+            <Button onClick={navigationClick} title="Back to Home" />
             <Heading level={1}>Oops!</Heading>
             <p>Sorry, an unexpected error has occurred.</p>
             <p>

@@ -13,7 +13,7 @@ const Product = () => {
     console.log("location>>", location);
     console.log("activatedRoute>>", activatedRoute);
     console.log("getData>>", getData);
-    const handleClick = () => {
+    const navigationClick = () => {
         let data = { id: 7, color: 'green' };
         navigate("/product/3", { state: data });
     };
@@ -23,7 +23,7 @@ const Product = () => {
             <h2>Route ID: {routeParams.id}</h2>
             <h2>Product Color: {getData?.color}</h2>
             <h2>Product ID: {getData?.id}</h2>
-            <Button onClick={handleClick} title="Go to Product 3" />
+            <Button onClick={navigationClick} title="Go to Product 3" />
         </>
     );
 }
