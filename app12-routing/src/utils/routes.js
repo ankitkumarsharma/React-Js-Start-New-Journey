@@ -8,6 +8,9 @@ import PageNotFound from "../pages/PageNotFound";
 import ErrorPage from "../layout/ErrorPage";
 import Product from "../pages/Product";
 import Crud from "../pages/Crud";
+import List from "../components/crud/List";
+import AddList from "../components/crud/AddList";
+import EditList from "../components/crud/EditList";
 
 export const router = createBrowserRouter([
   {
@@ -36,10 +39,21 @@ export const router = createBrowserRouter([
         element: <Product />
       },
       {
-        path: '/crud',
+        path: '/list',
         element: <Crud />,
         children:[
-          
+          {
+            path:'',
+            element: <List/>
+          },
+          {
+            path:'add-list',
+            element: <AddList/>
+          },
+          {
+            path:'edit-list',
+            element: <EditList/>
+          }
         ]
       },
       // {

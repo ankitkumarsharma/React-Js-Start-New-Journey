@@ -6,9 +6,9 @@ const LandingPageLayout = () => {
     return (
         <div>
             <Header />
-                <div className="p-5">
+            <div className="p-5 bg-gray-100">
                 <Outlet />
-                </div>
+            </div>
             <Footer />
         </div>
     );

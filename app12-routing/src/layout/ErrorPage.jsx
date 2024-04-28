@@ -1,16 +1,17 @@
-import { Link, useRouteError } from "react-router-dom";
-import Header from "./Header";
+import { useNavigate, useRouteError } from "react-router-dom";
+import Button from "./Button";
 import Heading from "./Heading";
 
 const ErrorPage = () => {
     const error = useRouteError();
     console.error(error);
-
+    let navigate = useNavigate();
+    const handleClick = () => {
+        navigate("/");
+    }
     return (
         <div id="error-page" className="text-center">
-            <button className="bg-gray-500 text-white p-2 rounded">
-                <Link to='/'>Go to Home</Link>
-            </button>
+            <Button onClick={handleClick} title="Back to Home" />
             <Heading level={1}>Oops!</Heading>
             <p>Sorry, an unexpected error has occurred.</p>
             <p>
