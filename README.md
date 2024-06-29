@@ -44,5 +44,7 @@ In this lession , we learned multiple hooks examples like useContext, useReducer
 How we can use routing and its features in React, will learn.
 - <b>App 13 > Redux</b> <br/>
 How we can use Redux in React, will learn. like basic redux and react-redux , need to install then use it in simple way.
+- <b>App 14 > Redux Toolkit</b> <br/>
+How we can use Redux Toolkit in React, will learn.
 
 
