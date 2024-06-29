@@ -42,5 +42,7 @@ In this lession , we learned multiple hooks examples like useContext, useReducer
     - <b> useRef Hook </b>: When you want a component to “remember” some information, but you don’t want that information to trigger new renders, you can use a ref. We will learn how we stop re-rendring of data with <b>useRef</b>.
 - <b>App 12 > Routing in React </b> <br/>
 How we can use routing and its features in React, will learn.
+- <b>App 13 > Redux</b> <br/>
+How we can use Redux in React, will learn. like basic redux and react-redux , need to install then use it in simple way.
 
 
